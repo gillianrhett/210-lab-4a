@@ -3,6 +3,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <cstdlib>
 
 using namespace std;
 
@@ -19,21 +20,28 @@ void printColor(Color); // display the 3 values
 
 int main() {
 
-//Milestone 1: the struct works and can received initialization data. Output the object's data to the console for confirmation.
-    Color c1 = newColor(0,0,0);
-    //printColor(c1);
     vector <Color> colors;
-    colors.push_back(c1); // TESTING
-    for (int i = 0; i < colors.size(); i++) {
-        printColor(colors.at(i));
-    }
-
-//Create an empty vector of type <Color> that will hold these structs.
-
-//Milestone 2: test your vector by populating it with a Color object and outputting it to the console.
 
 //Generate a random number between 25 and 50, and call that n. We will push n colors into the vector. How? Inside a loop running n times, create a temporary struct, populate it with random integers, and push that temporary struct into your container.
+    srand(time(0));    
+    int n = rand() % 26 + 25;
+    int r = 0;
+    int g = 0;
+    int b = 0;
+    Color tempColor = newColor(r, g, b);
+    for (int i = 0; i < n; i++) {
+        r = rand() % 255;
+        g = rand() % 255;
+        b = rand() % 255;
+        tempColor.r = r;
+        tempColor.g = g;
+        tempColor.b = b;
+        colors.push_back(tempColor);
+    }
 
+    for (int j = 0; j < colors.size(); j++) {
+        printColor(colors.at(j));
+    }
 //Milestone 3: your code runs up to this point, and outputs in any format the vector data for confirmation.
 
 //At the end of your program, output a well-formatted table that uses cout manipulators for column alignment. Output the vector's contents, showing the R/G/B values for each color in the vector. Your output should resemble this below.
@@ -43,7 +51,7 @@ int main() {
     return 0;
 }
 
-Color newColor(int rIn, int gIn, int bIn) {
+Color newColor(int rIn, int gIn, int bIn) { // TODO fix formatting
     Color newC;
     if (0 <= rIn && rIn <= 255)
         newC.r = rIn;

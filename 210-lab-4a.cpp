@@ -51,7 +51,8 @@ int main() {
     return 0;
 }
 
-Color newColor(int rIn, int gIn, int bIn) { // TODO fix formatting
+Color newColor(int rIn, int gIn, int bIn) { 
+    // TODO fix formatting
     Color newC;
     if (0 <= rIn && rIn <= 255)
         newC.r = rIn;

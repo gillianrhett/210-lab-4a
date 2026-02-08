@@ -4,6 +4,7 @@
 #include <string>
 #include <vector>
 #include <cstdlib>
+#include <iomanip>
 
 using namespace std;
 
@@ -16,7 +17,9 @@ struct Color {
 };
 
 Color newColor(int, int, int); // create a new color with input validation
-void printColor(Color); // display the 3 values
+void printColor(int, Color); // display the 3 values
+
+const int cw = 8; // column width
 
 int main() {
 
@@ -39,10 +42,20 @@ int main() {
         colors.push_back(tempColor);
     }
 
+    cout << setw(cw) << "\n  Color#";
+    cout << setw(cw) << "  R value";
+    cout << setw(cw) << "  G value";
+    cout << setw(cw) << "  B value";
+    cout << endl;
+    cout << setw(cw) << "------";
+    cout << setw(cw) << "------";
+    cout << setw(cw) << "------";
+    cout << setw(cw) << "------";
+    cout << endl;
+    
     for (int j = 0; j < colors.size(); j++) {
-        printColor(colors.at(j));
+        printColor(j, colors.at(j));
     }
-//Milestone 3: your code runs up to this point, and outputs in any format the vector data for confirmation.
 
 //At the end of your program, output a well-formatted table that uses cout manipulators for column alignment. Output the vector's contents, showing the R/G/B values for each color in the vector. Your output should resemble this below.
 
@@ -52,7 +65,6 @@ int main() {
 }
 
 Color newColor(int rIn, int gIn, int bIn) { 
-    // TODO fix formatting
     Color newC;
     if (0 <= rIn && rIn <= 255)
         newC.r = rIn;
@@ -75,6 +87,11 @@ Color newColor(int rIn, int gIn, int bIn) {
     return newC;
 }
 
-void printColor(Color colorIn) {
-    cout << "\n" << colorIn.r << ", " << colorIn.g << ", " << colorIn.b << endl;
+void printColor(int num, Color colorIn) {
+    // TODO fix formatting
+    cout << right << setw(cw) << num << "  ";
+    cout << right << setw(cw) << colorIn.r << "  ";
+    cout << right << setw(cw) << colorIn.g << "  ";
+    cout << right << setw(cw) << colorIn.b << "  ";
+    cout << endl;
 }

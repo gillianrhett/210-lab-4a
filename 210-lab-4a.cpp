@@ -2,6 +2,7 @@
 
 #include <iostream>
 #include <string>
+#include <vector>
 
 using namespace std;
 
@@ -20,7 +21,12 @@ int main() {
 
 //Milestone 1: the struct works and can received initialization data. Output the object's data to the console for confirmation.
     Color c1 = newColor(0,0,0);
-    printColor(c1);
+    //printColor(c1);
+    vector <Color> colors;
+    colors.push_back(c1); // TESTING
+    for (int i = 0; i < colors.size(); i++) {
+        printColor(colors.at(i));
+    }
 
 //Create an empty vector of type <Color> that will hold these structs.
 
